@@ -2,17 +2,19 @@ import React from 'react';
 import {
     StyleSheet,
     View,
-    Image, 
+    Image,
+    TouchableOpacity, 
   } from 'react-native';
 
 export default class MenuItem extends React.Component{
     render() {
-
         return (
             <View style={styles.menuItem}>
-                <Image 
-                    source={this.props.itemImage}
-                    style={styles.image}/>
+                <TouchableOpacity>
+                    <Image 
+                        source={this.props.itemImage}
+                        style={styles.image}/>
+                </TouchableOpacity>
             </View>
         );
     }
@@ -25,6 +27,7 @@ const styles = StyleSheet.create({
         padding: 20,
         backgroundColor: '#ccc',
         borderColor: '#000',
+        borderWidth:3
     },
     image: {
         width: '100%',

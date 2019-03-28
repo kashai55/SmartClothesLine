@@ -3,6 +3,7 @@ import {
     StyleSheet,
     View,
     Text,
+    Alert,
     ImageBackground,
     FlatList,
     ActivityIndicator,
@@ -25,17 +26,17 @@ export default class HomePage extends Component {
     };
   }
   _onClosePressed = () => {
-    console.log('El tendedero está tapado')
+    Alert.alert('El tendedero está tapado')
   };
 
   _onOpenPressed = () => {
-    console.log('El tendedero está destapado')
+    Alert.alert('El tendedero está destapado')
   };
   _onUpPressed = () => {
-    console.log('El tendedero se encuentra arriba')
+    Alert.alert('El tendedero se encuentra arriba')
   };
   _onDownPressed = () => {
-    console.log('El tendedero se encuentra abajo')
+    Alert.alert('El tendedero se encuentra abajo')
   };
   render() {
     return (
@@ -47,10 +48,10 @@ export default class HomePage extends Component {
                 <Text style={styles.header}>W E L C O M E</Text>
             </View>
             <View style={styles.menuContainer}>
-                <MenuItem itemImage={require('../../assets/up.png')} />
-                <MenuItem itemImage={require('../../assets/close.png')}/>
-                <MenuItem itemImage={require('../../assets/down.png')}/>
-                <MenuItem itemImage={require('../../assets/open.png')}/>
+                <MenuItem itemImage={require('../../assets/up.png')} onPress={this._onUpPressed} />
+                <MenuItem itemImage={require('../../assets/close.png')} onPress={this._onClosePressed}/>
+                <MenuItem itemImage={require('../../assets/down.png')} onPress={this._onDownPressed}/>
+                <MenuItem itemImage={require('../../assets/open.png')} onPress={this._onOpenPressed}/>
 
             </View>
         </View>
@@ -71,7 +72,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'rgba(47,163,128,.4)'
     },
     top:{
-        height: '50%',
+        height: '30%',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(255,255,255,.1)'
     },
     menuContainer: {
-        height: '50%',
+        height: '70%',
         flexDirection: 'row',
         flexWrap: 'wrap', 
     } 
