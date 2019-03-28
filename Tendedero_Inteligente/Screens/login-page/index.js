@@ -1,4 +1,4 @@
-import * as React from 'react';
+/*import * as React from 'react';
 import {
   Text,
   View,
@@ -9,7 +9,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 
-//import IconHouse from '../../assets/house.png';
+import MainIcon from '../../assets/IconBW2.png';
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
@@ -125,3 +125,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+*/
+
+
