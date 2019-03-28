@@ -40,8 +40,8 @@ export default class LoginPage extends React.Component {
 
   _onLoginPressed = () => {
     if (
-      this.state.correoString === 'micorreo@hotmail.com' &&
-      this.state.passwordString === 'hola'
+      this.state.correoString === 'a' &&
+      this.state.passwordString === 'a'
     ) {
       this.props.navigation.navigate('Home');
     } else {
@@ -126,14 +126,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-
-
-/*
-import * as React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import Button from "../components/Button";
-import FormTextInput from "../components/FormTextInput";
-import imageLogo from ",,/assets/images/logo.png";
-import colors from ""
-*/
