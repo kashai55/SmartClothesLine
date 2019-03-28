@@ -127,13 +127,3 @@ const styles = StyleSheet.create({
   },
 });
 
-
-
-/*
-import * as React from "react";
-import { Image, StyleSheet, View } from "react-native";
-import Button from "../components/Button";
-import FormTextInput from "../components/FormTextInput";
-import imageLogo from ",,/assets/images/logo.png";
-import colors from ""
-*/
