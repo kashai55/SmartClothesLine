@@ -31,15 +31,13 @@ import { createStackNavigator } from "react-navigation";
 
 
 
-import SearchPage from './Screens/search-page';
-import SearchResults from './Screens/search-results';
-import LoginPage from './Screens/login-page';
+import LoginPage from './Screens/login-page'
+import HomePage from './Screens/home-page';
 
 
 const App = createStackNavigator({
   Login: {screen: LoginPage},
-  Home: {screen: SearchPage},
-  Results: {screen: SearchResults}
+  Home: {screen: HomePage}
 })
 
 export default App 
