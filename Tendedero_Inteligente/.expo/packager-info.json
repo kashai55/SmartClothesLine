@@ -1,10 +1,9 @@
 {
-  "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
-  "webpackServerPort": null
+  "packagerPort": 19011,
+  "packagerPid": 7992,
+  "expoServerNgrokUrl": "https://v6-r3j.anonymous.tendedero-inteligente.exp.direct",
+  "packagerNgrokUrl": "https://packager.v6-r3j.anonymous.tendedero-inteligente.exp.direct",
+  "ngrokPid": 8868,
+  "devToolsPort": 19010,
+  "expoServerPort": 19001
 }
