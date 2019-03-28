@@ -1,4 +1,4 @@
-/*import * as React from 'react';
+import * as React from 'react';
 import {
   Text,
   View,
@@ -45,7 +45,7 @@ export default class LoginPage extends React.Component {
     ) {
       this.props.navigation.navigate('Home');
     } else {
-      this.setState({ message: 'Correo o contraseña incorrecta' });
+      this.setState({ message: 'Wrong email or password' });
     }
   };
 
@@ -55,22 +55,22 @@ export default class LoginPage extends React.Component {
     ) : null;
     return (
       <View style={styles.container}>
-        <Text style={styles.description}>Busca casas para comprar</Text>
-        <Text style={styles.description}>Bienvenido</Text>
+        <Text style={styles.description}>Be welcome to the</Text>
+        <Text style={styles.description}>Smart Clothes Line</Text>
         <View style={styles.flowRight}>
           <TextInput
             underlineColorAndroid={'transparent'}
             style={styles.SearchInput}
-            placeholder="Correo Electronico"
+            placeholder="E-mail"
             value={this.state.correoString}
             placeholderTextColor="#656565"
             onChange={this._onCorreoTextChanged}
           />
           <TextInput
-            type="password"
+            secureTextEntry = {true}
             underlineColorAndroid={'transparent'}
             style={styles.SearchInput}
-            placeholder="Contraseña"
+            placeholder={"Password"}
             value={this.state.passwordString}
             placeholderTextColor="#656565"
             onChange={this._onPasswordTextChanged}
@@ -81,6 +81,7 @@ export default class LoginPage extends React.Component {
             title="LOGIN"
           />
         </View>
+        <Image source={MainIcon} style={styles.image} />
         <Text style={styles.description}>{this.state.message}</Text>
         
         {spinner}
@@ -91,8 +92,8 @@ export default class LoginPage extends React.Component {
 
 const styles = StyleSheet.create({
   image: {
-    width: '20%',
-    height: '60%',
+    width: '50%',
+    height: '50%',
     resizeMode: 'contain',
   },
 
@@ -125,6 +126,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+
+
+/*
+import * as React from "react";
+import { Image, StyleSheet, View } from "react-native";
+import Button from "../components/Button";
+import FormTextInput from "../components/FormTextInput";
+import imageLogo from ",,/assets/images/logo.png";
+import colors from ""
 */
-
-
