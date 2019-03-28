@@ -26,11 +26,11 @@ export default class HomePage extends Component {
     };
   }
   _onClosePressed = () => {
-    Alert.alert('El tendedero está tapado')
+    Alert.alert('El tendedero está destapado')
   };
 
   _onOpenPressed = () => {
-    Alert.alert('El tendedero está destapado')
+    Alert.alert('El tendedero está tapado')
   };
   _onUpPressed = () => {
     Alert.alert('El tendedero se encuentra arriba')

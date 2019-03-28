@@ -10,11 +10,12 @@ export default class MenuItem extends React.Component{
     render() {
         return (
             <View style={styles.menuItem}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={this.props.onPress} >
                     <Image 
                         source={this.props.itemImage}
-                        style={styles.image}/>
+                        style={styles.image}/>    
                 </TouchableOpacity>
+                
             </View>
         );
     }
@@ -34,7 +35,5 @@ const styles = StyleSheet.create({
         height: '100%',
         opacity: 0.8,
         borderColor: '#fff',
-        
-
     }
 });

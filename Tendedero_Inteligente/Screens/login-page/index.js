@@ -7,9 +7,11 @@ import {
   Button,
   Image,
   ActivityIndicator,
+  ImageBackground,
 } from 'react-native';
 
 import MainIcon from '../../assets/IconBW2.png';
+import Background from '../../assets/bg.jpg';
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
@@ -54,43 +56,50 @@ export default class LoginPage extends React.Component {
       <ActivityIndicator size="large" />
     ) : null;
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>Be welcome to the</Text>
-        <Text style={styles.description}>Smart Clothes Line</Text>
-        <View style={styles.flowRight}>
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            style={styles.SearchInput}
-            placeholder="E-mail"
-            value={this.state.correoString}
-            placeholderTextColor="#656565"
-            onChange={this._onCorreoTextChanged}
-          />
-          <TextInput
-            secureTextEntry = {true}
-            underlineColorAndroid={'transparent'}
-            style={styles.SearchInput}
-            placeholder={"Password"}
-            value={this.state.passwordString}
-            placeholderTextColor="#656565"
-            onChange={this._onPasswordTextChanged}
-          />
-          <Button
-            onPress={this._onLoginPressed}
-            color="#48BBEC"
-            title="LOGIN"
-          />
+      <ImageBackground source={Background} style={{width: '100%', height: '100%'}}>
+        <View style={styles.container}>
+          <Text style={styles.description}>Be welcome to the</Text>
+          <Text style={styles.description}>Smart Clothes Line</Text>
+          <View style={styles.flowRight}>
+            <TextInput
+              underlineColorAndroid={'transparent'}
+              style={styles.Input}
+              placeholder="E-mail"
+              value={this.state.correoString}
+              placeholderTextColor="#ffffff"
+              onChange={this._onCorreoTextChanged}
+            />
+            <TextInput
+              secureTextEntry = {true}
+              underlineColorAndroid={'transparent'}
+              style={styles.Input}
+              placeholder={"Password"}
+              value={this.state.passwordString}
+              placeholderTextColor="#ffffff"
+              onChange={this._onPasswordTextChanged}
+            />
+            <Button
+              onPress={this._onLoginPressed}
+              color="#48BBEC"
+              title="LOGIN"
+            />
+          </View>
+          <Image source={MainIcon} style={styles.image} />
+          <Text style={styles.description}>{this.state.message}</Text>
+          
+          {spinner}
         </View>
-        <Image source={MainIcon} style={styles.image} />
-        <Text style={styles.description}>{this.state.message}</Text>
-        
-        {spinner}
-      </View>
+      </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  mainContainer: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+  },
   image: {
     width: '50%',
     height: '50%',
@@ -103,7 +112,7 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
   },
 
-  SearchInput: {
+  Input: {
     height: 36,
     padding: 4,
     marginRight: 5,
@@ -122,7 +131,7 @@ const styles = StyleSheet.create({
   description: {
     //marginButtom: 5,
     fontSize: 18,
-    color: '#656565',
+    color: '#ffffff',
     textAlign: 'center',
   },
 });
