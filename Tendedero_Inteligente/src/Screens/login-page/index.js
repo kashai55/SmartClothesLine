@@ -86,7 +86,6 @@ export default class LoginPage extends React.Component {
           </View>
           <Image source={MainIcon} style={styles.image} />
           <Text style={styles.description}>{this.state.message}</Text>
-          
           {spinner}
         </View>
       </ImageBackground>
@@ -97,41 +96,38 @@ export default class LoginPage extends React.Component {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    width: '100%',
     height: '100%',
+    width: '100%'
   },
   image: {
-    width: '50%',
     height: '50%',
     resizeMode: 'contain',
+    width: '50%',
   },
-
   flowRight: {
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'stretch',
   },
-
   Input: {
-    height: 36,
-    padding: 4,
-    marginRight: 5,
-    flexGrow: 1,
-    fontSize: 18,
-    borderWidth: 1,
     borderColor: '#48BBEC',
     borderRadius: 8,
+    borderWidth: 1,
     color: '#48BBEC',
+    flexGrow: 1,
+    fontSize: 18,
+    height: 36,
+    marginRight: 5,
+    padding: 4,
   },
   container: {
-    padding: 30,
-    marginTop: 65,
     alignItems: 'center',
+    marginTop: 65,
+    padding: 30
   },
   description: {
-    //marginButtom: 5,
-    fontSize: 18,
     color: '#ffffff',
-    textAlign: 'center',
+    fontSize: 18,
+    textAlign: 'center'
   },
 });

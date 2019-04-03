@@ -6,8 +6,8 @@ import { createStackNavigator } from "react-navigation";
 
 
 
-import LoginPage from './Screens/login-page'
-import HomePage from './Screens/home-page';
+import LoginPage from './src/Screens/login-page'
+import HomePage from './src/Screens/home-page';
 
 
 const App = createStackNavigator({
