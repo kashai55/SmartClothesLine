@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from "react";
 import {
   Text,
   View,
@@ -6,46 +6,41 @@ import {
   TextInput,
   Button,
   Image,
-  ActivityIndicator,
-} from 'react-native';
-
-import MainIcon from '../../assets/IconBW2.png';
+  ActivityIndicator
+} from "react-native";
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
-    title: 'Log-In',
+    title: "Log-In"
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      passwordString: '',
-      correoString: '',
+      passwordString: "",
+      correoString: "",
       isLoading: false,
-      message: '',
+      message: ""
     };
   }
 
   _onCorreoTextChanged = event => {
     this.setState({
-      correoString: event.nativeEvent.text,
+      correoString: event.nativeEvent.text
     });
   };
 
   _onPasswordTextChanged = event => {
     this.setState({
-      passwordString: event.nativeEvent.text,
+      passwordString: event.nativeEvent.text
     });
   };
 
   _onLoginPressed = () => {
-    if (
-      this.state.correoString === 'a' &&
-      this.state.passwordString === 'a'
-    ) {
-      this.props.navigation.navigate('Home');
+    if (this.state.correoString === "a" && this.state.passwordString === "a") {
+      this.props.navigation.navigate("Menu");
     } else {
-      this.setState({ message: 'Wrong email or password' });
+      this.setState({ message: "Wrong email or password" });
     }
   };
 
@@ -55,35 +50,33 @@ export default class LoginPage extends React.Component {
     ) : null;
     return (
       <View style={styles.container}>
-        <Text style={styles.description}>Be welcome to the</Text>
-        <Text style={styles.description}>Smart Clothes Line</Text>
+        <Text style={styles.description}>Ingresar</Text>
         <View style={styles.flowRight}>
           <TextInput
-            underlineColorAndroid={'transparent'}
-            style={styles.SearchInput}
+            style={styles.input}
             placeholder="E-mail"
+            placeholderTextColor="rgba(225,225,225,0.7)"
             value={this.state.correoString}
-            placeholderTextColor="#656565"
             onChange={this._onCorreoTextChanged}
           />
           <TextInput
-            secureTextEntry = {true}
-            underlineColorAndroid={'transparent'}
-            style={styles.SearchInput}
+            style={styles.input}
+            secureTextEntry={true}
             placeholder={"Password"}
+            placeholderTextColor="rgba(225,225,225,0.7)"
             value={this.state.passwordString}
-            placeholderTextColor="#656565"
             onChange={this._onPasswordTextChanged}
           />
           <Button
+            style={styles.buttonContainer}
             onPress={this._onLoginPressed}
             color="#48BBEC"
             title="LOGIN"
           />
         </View>
-        <Image source={MainIcon} style={styles.image} />
-        <Text style={styles.description}>{this.state.message}</Text>
-        
+        <View style={styles.loginContainer}>
+          <Image resizeMode="contain" style={styles.logo} source={require('../../assets/IconBW.png')} />
+        </View>
         {spinner}
       </View>
     );
@@ -92,37 +85,46 @@ export default class LoginPage extends React.Component {
 
 const styles = StyleSheet.create({
   image: {
-    width: '50%',
-    height: '50%',
-    resizeMode: 'contain',
+    width: "50%",
+    height: "50%",
+    resizeMode: "contain"
   },
 
-  flowRight: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    alignSelf: 'stretch',
-  },
-
-  SearchInput: {
-    height: 36,
-    padding: 4,
-    marginRight: 5,
-    flexGrow: 1,
-    fontSize: 18,
-    borderWidth: 1,
-    borderColor: '#48BBEC',
-    borderRadius: 8,
-    color: '#48BBEC',
-  },
   container: {
-    padding: 30,
-    marginTop: 65,
-    alignItems: 'center',
+    flex: 1,
+    backgroundColor: "#2c3e50"
+  },
+  loginContainer: {
+    alignItems: "center",
+    flexGrow: 1,
+    justifyContent: "center"
+  },
+  logo: {
+    position: "absolute",
+    width: 300,
+    height: 100
+  },
+  input: {
+    height: 40,
+    backgroundColor: "rgba(225,225,225,0.2)",
+    marginBottom: 10,
+    padding: 10,
+    color: "#fff"
+  },
+  buttonContainer: {
+    backgroundColor: "#2980b6",
+    paddingVertical: 15
+  },
+  buttonText: {
+    color: "#fff",
+    textAlign: "center",
+    fontWeight: "700"
   },
   description: {
-    //marginButtom: 5,
-    fontSize: 18,
-    color: '#656565',
-    textAlign: 'center',
-  },
+    marginBottom: 25,
+    marginTop:25,
+    fontSize: 28,
+    color: "#fff",
+    textAlign: "center"
+  }
 });

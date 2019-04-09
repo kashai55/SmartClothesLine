@@ -1,94 +1,126 @@
 import React, { Component } from 'react';
 import {
-    StyleSheet,
-    View,
-    Text,
-    Alert,
-    ImageBackground,
-    FlatList,
-    ActivityIndicator,
-    Image,
-    TouchableOpacity,
-  } from 'react-native';
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Alert,
+  ImageBackground,
+  ScrollView,
+  FlatList,
+} from 'react-native';
 
-import MenuItem from '../../Screens/home-page/MenuItem';
-export default class HomePage extends Component {
-  static navigationOptions = {
-    title: 'Home',
-  };
+import Up from '../../assets/up.png'
+import Open from '../../assets/open.png'
+import Down from '../../assets/down.png'
+import Close from '../../assets/close.png'
+
+export default class MenuPage extends Component {
+
+  clickEventListener(item) {
+    Alert.alert("Hola")
+  }
+
   constructor(props) {
     super(props);
     this.state = {
-      open: 'El tendedero está destapado',
-      close: 'El tendedero está tapado',
-      upFunction: 'El tendedero se encuentra arriba',
-      downFunction: 'El tendedero se encuentra abajo',
+      data: [
+        {id:1, title: "Subir tendedero",  color:"#C0C0C0", image: Up},
+        {id:1, title: "Abrir tendedero", color:"#87CEEB", image: Open},
+        {id:2, title: "Bajar tendedero",  color:"#87CEEB", image: Down},
+        {id:3, title: "Cerrar tendedero", color:"#C0C0C0", image: Close},
+      ]
     };
   }
-  _onClosePressed = () => {
-    Alert.alert('El tendedero está tapado')
-  };
 
-  _onOpenPressed = () => {
-    Alert.alert('El tendedero está destapado')
-  };
-  _onUpPressed = () => {
-    Alert.alert('El tendedero se encuentra arriba')
-  };
-  _onDownPressed = () => {
-    Alert.alert('El tendedero se encuentra abajo')
-  };
   render() {
     return (
       <ImageBackground 
-        source={require('../../assets/bg.jpg')}
-        style={styles.MainContainer}>
-        <View style={styles.overlayContainer}>
-            <View style={styles.top}>
-                <Text style={styles.header}>W E L C O M E</Text>
-            </View>
-            <View style={styles.menuContainer}>
-                <MenuItem itemImage={require('../../assets/up.png')} onPress={this._onUpPressed} />
-                <MenuItem itemImage={require('../../assets/close.png')} onPress={this._onClosePressed}/>
-                <MenuItem itemImage={require('../../assets/down.png')} onPress={this._onDownPressed}/>
-                <MenuItem itemImage={require('../../assets/open.png')} onPress={this._onOpenPressed}/>
-
-            </View>
+      source={require('../../assets/main.jpg')}
+      style={styles.container}>
+        <View style={styles.container}>
+            <FlatList style={styles.list}
+            contentContainerStyle={styles.listContainer}
+            data={this.state.data}
+            horizontal={false}
+            numColumns={2}
+            keyExtractor= {(item) => {
+                return item.id;
+            }}
+            renderItem={({item}) => {
+                return (
+                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={this.clickEventListener}>
+                    <View style={styles.cardHeader}>
+                        <Text style={styles.title}>{item.title}</Text>
+                    </View>
+                    <Image style={styles.cardImage} source={item.image}/>
+                    <View style={styles.cardFooter}>
+                        <Text style={styles.subTitle}>{item.members}</Text>
+                    </View>
+                </TouchableOpacity>
+                )
+            }}/>
         </View>
-         
       </ImageBackground>
     );
   }
 }
 
 const styles = StyleSheet.create({
-    MainContainer: {
-      flex: 1,
-      width: '100%',
-      height: '100%',
-    },
-    overlayContainer: {
-      flex: 1,
-      backgroundColor: 'rgba(47,163,128,.4)'
-    },
-    top:{
-        height: '30%',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    header: {
-        color: '#fff',
-        fontSize: 28,
-        borderColor: '#fff',
-        borderWidth: 2,
-        padding: 20,
-        paddingLeft: 40,
-        paddingRight: 40,
-        backgroundColor: 'rgba(255,255,255,.1)'
-    },
-    menuContainer: {
-        height: '70%',
-        flexDirection: 'row',
-        flexWrap: 'wrap', 
-    } 
-});
+  container:{
+    flex:1,
+    marginTop:20,
+  },
+  listContainer:{
+    alignItems:'center'
+  },
+  /******** card **************/
+  card:{
+    marginHorizontal:2,
+    marginVertical:2,
+    flexBasis: '48%',
+  },
+  cardHeader: {
+    paddingVertical: 17,
+    paddingHorizontal: 16,
+    borderTopLeftRadius: 1,
+    borderTopRightRadius: 1,
+    flexDirection: 'row',
+    alignItems:"center", 
+    justifyContent:"center"
+  },
+  cardContent: {
+    paddingVertical: 12.5,
+    paddingHorizontal: 16,
+  },
+  cardFooter:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 12.5,
+    paddingBottom: 25,
+    paddingHorizontal: 16,
+    borderBottomLeftRadius: 1,
+    borderBottomRightRadius: 1,
+  },
+  cardImage:{
+    height: 70,
+    width: 70,
+    alignSelf:'center'
+  },
+  title:{
+    fontSize:16,
+    flex:1,
+    color:"#FFFFFF",
+    fontWeight:'bold'
+  },
+  subTitle:{
+    fontSize:12,
+    flex:1,
+    color:"#FFFFFF",
+  },
+  icon:{
+    height: 20,
+    width: 20, 
+  }
+});     
