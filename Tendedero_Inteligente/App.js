@@ -7,18 +7,15 @@ import { createStackNavigator } from "react-navigation";
 
 
 import LoginPage from './Screens/login-page'
-import HangerPage from './Screens/home-page';
-import MenuPage from './Screens/home-page';
-import RegisterPage from './Screens/register-page'
-
+import RegisterPage from './Screens/login-page/register.js'
+import GridPage from './Screens/home-page/grid.js'
+import ClotheslinePage from './Screens/home-page'
 
 const App = createStackNavigator({
   Login: {screen: LoginPage},
   Register: {screen: RegisterPage},
-  Menu: {screen: MenuPage},
-  Hanger: {screen: HangerPage},
-
-//  Settings: {screen: SettingsPage}
+  Menu: {screen: GridPage},
+  Clothesline: {screen: ClotheslinePage}
 })
 
 export default App 

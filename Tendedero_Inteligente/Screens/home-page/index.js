@@ -16,7 +16,7 @@ import Open from '../../assets/open.png'
 import Down from '../../assets/down.png'
 import Close from '../../assets/close.png'
 
-export default class MenuPage extends Component {
+export default class ClotheslinePage extends Component {
 
   clickEventListener(item) {
     Alert.alert("Hola")

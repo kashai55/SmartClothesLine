@@ -6,7 +6,8 @@ import {
   TextInput,
   Button,
   Image,
-  ActivityIndicator
+  ActivityIndicator,
+  TouchableOpacity
 } from "react-native";
 
 export default class LoginPage extends React.Component {
@@ -44,13 +45,17 @@ export default class LoginPage extends React.Component {
     }
   };
 
+  _onMessagePressed = () => {
+    this.props.navigation.navigate("Register");
+  };
+
   render() {
     const spinner = this.state.isLoading ? (
       <ActivityIndicator size="large" />
     ) : null;
     return (
-      <View style={styles.container}>
-        <Text style={styles.description}>Ingresar</Text>
+      <View style={styles.container}> 
+        <Text style={styles.description}>Ingrese sus datos</Text>
         <View style={styles.flowRight}>
           <TextInput
             style={styles.input}
@@ -73,11 +78,13 @@ export default class LoginPage extends React.Component {
             color="#48BBEC"
             title="LOGIN"
           />
+          <TouchableOpacity onPress={this._onMessagePressed}>
+            <Text style={styles.description2}>¿No tiene una cuenta? Registrese</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
           <Image resizeMode="contain" style={styles.logo} source={require('../../assets/IconBW.png')} />
         </View>
-        {spinner}
       </View>
     );
   }
@@ -92,7 +99,10 @@ const styles = StyleSheet.create({
 
   container: {
     flex: 1,
-    backgroundColor: "#2c3e50"
+    backgroundColor: "#2c3e50",
+    width: 320,
+    padding: 50,
+    margin: 20,
   },
   loginContainer: {
     alignItems: "center",
@@ -113,7 +123,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     backgroundColor: "#2980b6",
-    paddingVertical: 15
+    paddingVertical: 15,
+    height: 40,
+    marginBottom: 10,
+    padding: 10,
   },
   buttonText: {
     color: "#fff",
@@ -124,6 +137,13 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     marginTop:25,
     fontSize: 28,
+    color: "#fff",
+    textAlign: "center"
+  },
+  description2: {
+    marginBottom: 25,
+    marginTop:25,
+    fontSize: 14,
     color: "#fff",
     textAlign: "center"
   }

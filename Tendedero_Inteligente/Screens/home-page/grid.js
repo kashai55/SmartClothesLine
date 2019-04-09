@@ -14,7 +14,7 @@ import {
 import Hanger from '../../assets/hanger.png'
 import Settings from '../../assets/settings.png'
 
-export default class MenuPage extends Component {
+export default class GridPage extends Component {
 
   constructor(props) {
     super(props);
@@ -31,7 +31,7 @@ export default class MenuPage extends Component {
   }
 
   _onHangerPressed = event => {
-    this.props.navigation.navigate('Hanger')
+    this.props.navigation.navigate('Clothesline')
   };
 
   render() {
