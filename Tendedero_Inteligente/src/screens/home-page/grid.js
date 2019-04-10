@@ -21,18 +21,19 @@ export default class GridPage extends Component {
     this.state = {
       data: [
         { id: 1, title: "Tendedero", color: "#C0C0C0", image: Hanger },
-        { id: 1, title: "Configuración", color: "#87CEEB", image: Settings },
+        { id: 2, title: "Configuración", color: "#87CEEB", image: Settings },
       ]
     };
   }
 
   clickEventListener(item) {
-    Alert.Alert("Hola")
+    if (item === 1){
+      this.props.navigation.navigate('Clothesline')
+    }
+    if(item === 2){
+      Alert.alert("hola")
+    }
   }
-
-  _onHangerPressed = event => {
-    this.props.navigation.navigate('Clothesline')
-  };
 
   render() {
     return (
@@ -50,7 +51,7 @@ export default class GridPage extends Component {
             }}
             renderItem={({ item }) => {
               return (
-                <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]} onPress={this._onHangerPressed}>
+                <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]} onPress={() => {this.clickEventListener(item.id)}}>
                   <View style={styles.cardHeader}>
                     <Text style={styles.title}>{item.title}</Text>
                   </View>

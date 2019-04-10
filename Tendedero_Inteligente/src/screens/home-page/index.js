@@ -19,7 +19,18 @@ import Close from '../../assets/close.png'
 export default class ClotheslinePage extends Component {
 
   clickEventListener(item) {
-    Alert.alert("Hola")
+    if (item === 1){
+      Alert.alert("Sube")
+    }
+    if(item === 2){
+      Alert.alert("Abre")
+    }
+    if (item === 3){
+      Alert.alert("Baja")
+    }
+    if(item === 4){
+      Alert.alert("Cierra")
+    }
   }
 
   constructor(props) {
@@ -27,9 +38,9 @@ export default class ClotheslinePage extends Component {
     this.state = {
       data: [
         {id:1, title: "Subir tendedero",  color:"#C0C0C0", image: Up},
-        {id:1, title: "Abrir tendedero", color:"#87CEEB", image: Open},
-        {id:2, title: "Bajar tendedero",  color:"#87CEEB", image: Down},
-        {id:3, title: "Cerrar tendedero", color:"#C0C0C0", image: Close},
+        {id:2, title: "Abrir tendedero", color:"#87CEEB", image: Open},
+        {id:3, title: "Bajar tendedero",  color:"#87CEEB", image: Down},
+        {id:4, title: "Cerrar tendedero", color:"#C0C0C0", image: Close},
       ]
     };
   }
@@ -50,7 +61,7 @@ export default class ClotheslinePage extends Component {
             }}
             renderItem={({item}) => {
                 return (
-                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={this.clickEventListener}>
+                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => {this.clickEventListener(item.id)}}>
                     <View style={styles.cardHeader}>
                         <Text style={styles.title}>{item.title}</Text>
                     </View>
