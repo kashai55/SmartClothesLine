@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   Text,
   View,
+  Alert,
   StyleSheet,
   TextInput,
   Button,
@@ -9,6 +10,9 @@ import {
   ActivityIndicator,
   TouchableOpacity
 } from "react-native";
+
+global.ipAddress = "192.168.1.5";
+global.port = "8000";
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
@@ -18,16 +22,33 @@ export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      passwordString: "",
-      correoString: "",
-      isLoading: false,
-      message: ""
+      userString: '',
+      passwordString:'',
+      users: [],
+      url: "http://" + ipAddress + ":" + port + "/api/v1/login"
     };
   }
 
-  _onCorreoTextChanged = event => {
+  componentDidMount(){
+    this.getUsers();
+  }
+
+  getUsers = () =>{
+    fetch('http://192.168.1.5:8000/api/v1/login?userName=' + this.state.userString + '&' + 'password=' + this.state.passwordString, {
+      method: 'GET'
+    })
+    .then((response) => response.json())
+    .then((responseJson) => {
+        console.log(responseJson);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+  }
+
+  _onUserTextChanged = event => {
     this.setState({
-      correoString: event.nativeEvent.text
+      userString: event.nativeEvent.text
     });
   };
 
@@ -35,14 +56,6 @@ export default class LoginPage extends React.Component {
     this.setState({
       passwordString: event.nativeEvent.text
     });
-  };
-
-  _onLoginPressed = () => {
-    if (this.state.correoString === "a" && this.state.passwordString === "a") {
-      this.props.navigation.navigate("Menu");
-    } else {
-      this.setState({ message: "Wrong email or password" });
-    }
   };
 
   _onMessagePressed = () => {
@@ -59,10 +72,10 @@ export default class LoginPage extends React.Component {
         <View style={styles.flowRight}>
           <TextInput
             style={styles.input}
-            placeholder="E-mail"
+            placeholder="User name"
             placeholderTextColor="rgba(225,225,225,0.7)"
-            value={this.state.correoString}
-            onChange={this._onCorreoTextChanged}
+            value={this.state.userString}
+            onChange={this._onUserTextChanged}
           />
           <TextInput
             style={styles.input}
@@ -74,7 +87,7 @@ export default class LoginPage extends React.Component {
           />
           <Button
             style={styles.buttonContainer}
-            onPress={this._onLoginPressed}
+            onPress={this.getUsers}
             color="#48BBEC"
             title="LOGIN"
           />
@@ -83,7 +96,7 @@ export default class LoginPage extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
-          <Image resizeMode="contain" style={styles.logo} source={require('../../assets/IconBW.png')} />
+          <Image resizeMode="contain" style={styles.logo} source={require('../../assets/login.png')} />
         </View>
       </View>
     );

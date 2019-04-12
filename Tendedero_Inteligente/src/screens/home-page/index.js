@@ -7,7 +7,6 @@ import {
   Image,
   Alert,
   ImageBackground,
-  ScrollView,
   FlatList,
 } from 'react-native';
 
