@@ -1,13 +1,4 @@
 
-
-Para la correcta instalacion de los componentes que utiliza este proyecto se deben seguir los siguientes pasos:
-
-1) Instalar Nodejs desde la pagina https://nodejs.org/es/
-2) Descargar este repositorio (master)
-3) 
-
-
-
 Este proyecto consiste en el manejo de un tendedero controlado por motores, un sensor y un modulo wi-fi, dicho tendedero tiene la funcionalidad cubrir la vestimenta en el momento en que se presente precipitación
 
 ## Para comenzar
@@ -26,19 +17,22 @@ https://nodejs.org/es/
 
 A continuacion se prsentan los comandos para instalar las herramientas
 
-Say what the step will be
+Instalar las dependencias y ambientes que necesitamos en la carpeta de la aplicacion:
 
 ```
-Give the example
-```
-
-And repeat
+1. npm install -g expo-cli
 
 ```
-until finished
-```
 
-End with an example of getting some data out of the system or using it for a little demo
+Instalar las dependencias del servidor:
+
+```
+1. npm install --save nodemon
+2. npm install @babel/core @babel/node --save-dev
+3. npm install @babel/preset-env --save-dev
+4. npm install hapi --save
+5. npm install mongoose
+```
 
 ## Creado con
 
