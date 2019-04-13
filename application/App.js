@@ -5,8 +5,8 @@ import { Constants } from 'expo';
 import { createStackNavigator } from "react-navigation";
 
 import LoginPage from './src/screens/login-page'
-import RegisterPage from './src/screens/login-page/register.js.js.js'
-import GridPage from './src/screens/home-page/grid.js.js.js'
+import RegisterPage from './src/screens/login-page/register.js'
+import GridPage from './src/screens/home-page/grid.js'
 import ClotheslinePage from './src/screens/home-page'
 import OptionsPage from './src/screens/home-page/options';
 

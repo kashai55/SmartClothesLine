@@ -1,9 +1,8 @@
-import * as React from 'react'
+import * as React from "react";
 import {
   Text,
   View,
   Alert,
-  StyleSheet,
   TextInput,
   Button,
   Image,
@@ -11,8 +10,10 @@ import {
   TouchableOpacity
 } from "react-native";
 
-global.ipAddress = "192.168.1.5";
-global.port = "8000";
+//------ Import constant files
+import "../../constants/global.js";
+import styles from "../../constants/styles.js";
+import colors from "../../constants/colors.js";
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
@@ -22,33 +23,44 @@ export default class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userString: '',
-      passwordString:'',
+      //------ Communication values
+      userString: "",
+      passwordString: "",
       users: [],
-      url: "http://" + ipAddress + ":" + port + "/api/v1/login"
+      url:
+        "http://" +
+        global.ipAddress +
+        ":" +
+        global.port +
+        global.pathLoginRegister
     };
   }
 
-  getUsers = () =>{
-    fetch('http://192.168.1.5:8000/api/v1/login?userName=' + this.state.userString + '&' + 'password=' + this.state.passwordString, {
-      method: 'GET'
-    })
-    .then((response) => response.json())
-    .then((responseJson) => {
+  getUsers = () => {
+    fetch(
+      global.pathGetMethod +
+        this.state.userString +
+        "&" +
+        "password=" +
+        this.state.passwordString,
+      {
+        method: "GET"
+      }
+    )
+      .then(response => response.json())
+      .then(responseJson => {
         console.log(responseJson);
-        if(responseJson === 0){
-          Alert.alert('Usuario o contraseña incorrecta.')
-        }
-        else{
-          Alert.alert('Bienvenido.')
+        if (responseJson === 0) {
+          Alert.alert("Usuario o contraseña incorrecta.");
+        } else {
+          Alert.alert("Ingreso exitoso");
           this.props.navigation.navigate("Menu");
-
         }
-    })
-    .catch((error) => {
+      })
+      .catch(error => {
         console.error(error);
-    });
-  }
+      });
+  };
 
   _onUserTextChanged = event => {
     this.setState({
@@ -71,13 +83,13 @@ export default class LoginPage extends React.Component {
       <ActivityIndicator size="large" />
     ) : null;
     return (
-      <View style={styles.container}> 
-        <Text style={styles.description}>Ingrese sus datos</Text>
+      <View style={styles.containerLog}>
+        <Text style={styles.description}>¡Bienvenido!</Text>
         <View style={styles.flowRight}>
           <TextInput
             style={styles.input}
             placeholder="User name"
-            placeholderTextColor="rgba(225,225,225,0.7)"
+            placeholderTextColor={colors.opacityGray}
             value={this.state.userString}
             onChange={this._onUserTextChanged}
           />
@@ -85,83 +97,32 @@ export default class LoginPage extends React.Component {
             style={styles.input}
             secureTextEntry={true}
             placeholder={"Password"}
-            placeholderTextColor="rgba(225,225,225,0.7)"
+            placeholderTextColor={colors.opacityGray}
             value={this.state.passwordString}
             onChange={this._onPasswordTextChanged}
           />
           <Button
             style={styles.buttonContainer}
-            onPress={ () => {this.getUsers()}}
-            color="#48BBEC"
+            onPress={() => {
+              this.getUsers();
+            }}
+            color={colors.bluelight}
             title="LOGIN"
           />
           <TouchableOpacity onPress={this._onMessagePressed}>
-            <Text style={styles.description2}>¿No tiene una cuenta? Registrese</Text>
+            <Text style={styles.description2}>
+              ¿No tiene una cuenta? Registrese presionando aquí.
+            </Text>
           </TouchableOpacity>
         </View>
         <View style={styles.loginContainer}>
-          <Image resizeMode="contain" style={styles.logo} source={require('../../assets/login.png')} />
+          <Image
+            resizeMode="contain"
+            style={styles.logo}
+            source={require("../../assets/login.png")}
+          />
         </View>
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: "50%",
-    height: "50%",
-    resizeMode: "contain"
-  },
-
-  container: {
-    flex: 1,
-    backgroundColor: "#2c3e50",
-    width: 320,
-    padding: 50,
-    margin: 20,
-  },
-  loginContainer: {
-    alignItems: "center",
-    flexGrow: 1,
-    justifyContent: "center"
-  },
-  logo: {
-    position: "absolute",
-    width: 300,
-    height: 100
-  },
-  input: {
-    height: 40,
-    backgroundColor: "rgba(225,225,225,0.2)",
-    marginBottom: 10,
-    padding: 10,
-    color: "#fff"
-  },
-  buttonContainer: {
-    backgroundColor: "#2980b6",
-    paddingVertical: 15,
-    height: 40,
-    marginBottom: 10,
-    padding: 10,
-  },
-  buttonText: {
-    color: "#fff",
-    textAlign: "center",
-    fontWeight: "700"
-  },
-  description: {
-    marginBottom: 25,
-    marginTop:25,
-    fontSize: 28,
-    color: "#fff",
-    textAlign: "center"
-  },
-  description2: {
-    marginBottom: 25,
-    marginTop:25,
-    fontSize: 14,
-    color: "#fff",
-    textAlign: "center"
-  }
-});
