@@ -30,7 +30,7 @@ export default class GridPage extends Component {
       this.props.navigation.navigate('Clothesline')
     }
     if(item === 2){
-      Alert.alert("hola")
+      this.props.navigation.navigate('Options')
     }
   }
 

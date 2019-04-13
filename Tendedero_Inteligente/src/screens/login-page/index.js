@@ -29,10 +29,6 @@ export default class LoginPage extends React.Component {
     };
   }
 
-  componentDidMount(){
-    this.getUsers();
-  }
-
   getUsers = () =>{
     fetch('http://192.168.1.5:8000/api/v1/login?userName=' + this.state.userString + '&' + 'password=' + this.state.passwordString, {
       method: 'GET'
@@ -40,6 +36,14 @@ export default class LoginPage extends React.Component {
     .then((response) => response.json())
     .then((responseJson) => {
         console.log(responseJson);
+        if(responseJson === 0){
+          Alert.alert('Usuario o contraseña incorrecta.')
+        }
+        else{
+          Alert.alert('Bienvenido.')
+          this.props.navigation.navigate("Menu");
+
+        }
     })
     .catch((error) => {
         console.error(error);
@@ -87,7 +91,7 @@ export default class LoginPage extends React.Component {
           />
           <Button
             style={styles.buttonContainer}
-            onPress={this.getUsers}
+            onPress={ () => {this.getUsers()}}
             color="#48BBEC"
             title="LOGIN"
           />

@@ -14,6 +14,7 @@ import Up from '../../assets/up.png'
 import Open from '../../assets/open.png'
 import Down from '../../assets/down.png'
 import Close from '../../assets/close.png'
+import switchAuto from '../../screens/home-page/options'
 
 export default class ClotheslinePage extends Component {
 
@@ -21,14 +22,21 @@ export default class ClotheslinePage extends Component {
     if (item === 1){
       Alert.alert("Sube")
     }
-    if(item === 2){
-      Alert.alert("Abre")
-    }
     if (item === 3){
       Alert.alert("Baja")
     }
-    if(item === 4){
-      Alert.alert("Cierra")
+    else{
+      if(switchAuto === true){
+        Alert.alert('El despliegue automático del toldo está activado, para usar estos botones debe desactivarlo en la ventana de opciones.')
+      }
+      else{
+        if(item === 2){
+          Alert.alert("Abre")
+        }
+        if(item === 4){
+          Alert.alert("Cierra")
+        }
+      }
     }
   }
 
