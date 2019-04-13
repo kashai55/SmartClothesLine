@@ -1,9 +1,9 @@
 {
-  "packagerPort": 19001,
-  "packagerPid": 9284,
   "expoServerNgrokUrl": "https://vf-5di.anonymous.tendedero-inteligente.exp.direct",
   "packagerNgrokUrl": "https://packager.vf-5di.anonymous.tendedero-inteligente.exp.direct",
-  "ngrokPid": 10116,
+  "ngrokPid": 4612,
+  "packagerPort": 19001,
+  "packagerPid": 14420,
   "devToolsPort": 19002,
   "expoServerPort": 19000
 }
