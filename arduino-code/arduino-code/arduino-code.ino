@@ -61,7 +61,6 @@ void CheckRain(){
   else if(sensor == HIGH && tent_on == true ){  //Si el sensor NO capta agua y el toldo SI esta desplegado
     Serial.println("Seco");
     tentOff();
-    //postToServer("clothesline/openclosed","tent_Up=false");
   }
 }
 
@@ -69,9 +68,7 @@ void checkServer(){
   Serial.printf("\n[Connecting to %s ... ", host);
   if (client.connect(host, port)){
     getTent();
-   //postToServer("clothesline/updown");
   }
-  //delay(1000); //solo para prueba
   Serial.printf("\n[Connecting to %s ... ", host);
   if (client.connect(host, port)){
     getUpDown();
@@ -107,13 +104,11 @@ String getFromServer(String request){
     if ( client.available() ){
       String line = client.readStringUntil('\n');
       linetemp = line;
-      //response = response + "++++" + line;
       Serial.println(line);
     }
   }
   
   client.stop();
-  //Serial.println("mi respuesta es:" + response);
   Serial.println("la respuesta que quiero es:" + linetemp);
   Serial.println("\n[Disconnected]");
   Serial.println("******************************************");
@@ -135,12 +130,10 @@ void getTent(){
   if (tentStateServer == "true" && sensor_switch == false){
     digitalWrite(LED_BUILTIN, HIGH);  //ABRIR EL TOLDO
     tentOn();
-    //sensor_switch = false;//deshabilitar sensor
   }
   else if (tentStateServer == "false" && sensor_switch == false){ //CERRAR EL TOLDO
     digitalWrite(LED_BUILTIN, LOW);
     tentOff();
-    //sensor_switch = true; //habilitar de nuevo el sensor
   }
 }
 
@@ -180,12 +173,8 @@ void lineDown(){
 void postToServer(String request,String postData){
   if (client.connect(host, port) ){
     client.setTimeout(100);
-    Serial.println("connected]");
-  
+    Serial.println("connected]"); 
     Serial.println("[Sending a " + request + " request]");
-    
-    //postData = "line_Up=holasdesdeesp8266";   esto solo para recordar como escribir la data
-    
     client.println("POST /" + request + " HTTP/1.0");
     client.println("Host: " + String(host));
     client.println("Cache-Control: no-cache");
@@ -204,17 +193,11 @@ void postToServer(String request,String postData){
       if (client.available())
       {
         String line = client.readStringUntil('\n');
-        
-        //linetemp = line;
-        //response = response + "++++" + line;
-        
         Serial.println(line);
       }
     }
     
     client.stop();
-    //Serial.println("mi respuesta es:" + response);
-    //Serial.println("la respuesta que quiro es:" + linetemp);
     Serial.println("\n[Disconnected after post]");
   }
 }
@@ -270,5 +253,5 @@ void TurnOFFB(){
 void loop() {
   CheckRain();
   checkServer(); 
-  delay(5000);
+  delay(700);
 }
