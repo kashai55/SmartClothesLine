@@ -3,12 +3,7 @@ import {
     Text,
     View,
     Alert,
-    StyleSheet,
-    TextInput,
-    Button,
-    Image,
-    ActivityIndicator,
-    TouchableOpacity
+    StyleSheet
 } from "react-native";
 
 import SwitchButton from './switch'
@@ -31,11 +26,11 @@ export default class LoginPage extends React.Component {
 
     _toggleSwitch = (value) => {
         this.setState({switchValue: value})
-        if(this.switchValue === true){
-            switchAuto = true
+        if(this.switchAuto === this.state.switchValue){
+            this.switchAuto = true
         }
         else{
-            switchAuto = false
+            this.switchAuto = false
         }
     }
 
@@ -49,9 +44,6 @@ export default class LoginPage extends React.Component {
                         switchValue={this.state.switchValue}
                         style={styles.switch}
                     />
-                </View>
-                <View style={styles.loginContainer}>
-                    <Image resizeMode="contain" style={styles.logo} source={require('../../assets/login.png')} />
                 </View>
             </View>
         );
