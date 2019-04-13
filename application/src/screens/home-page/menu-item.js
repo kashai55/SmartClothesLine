@@ -15,7 +15,6 @@ export default class MenuItem extends React.Component {
                         source={this.props.itemImage}
                         style={styles.image} />
                 </TouchableOpacity>
-                
             </View>
         );
     }
