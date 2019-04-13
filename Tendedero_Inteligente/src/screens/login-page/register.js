@@ -8,8 +8,8 @@ import {
   TextInput, 
   StyleSheet } from "react-native";
 
-global.ipAddress = "192.168.1.5";
-global.port = "8000";
+global.ipAddress = "192.168.1.27";
+global.port = "8080";
   
 export default class SignUp extends React.Component {
   constructor(props) {

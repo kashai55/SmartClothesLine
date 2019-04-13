@@ -11,8 +11,8 @@ import {
   TouchableOpacity
 } from "react-native";
 
-global.ipAddress = "192.168.1.5";
-global.port = "8000";
+global.ipAddress = "192.168.1.27";
+global.port = "8080";
 
 export default class LoginPage extends React.Component {
   static navigationOptions = {
@@ -30,7 +30,7 @@ export default class LoginPage extends React.Component {
   }
 
   getUsers = () =>{
-    fetch('http://192.168.1.5:8000/api/v1/login?userName=' + this.state.userString + '&' + 'password=' + this.state.passwordString, {
+    fetch('http://192.168.1.27:8080/api/v1/login?userName=' + this.state.userString + '&' + 'password=' + this.state.passwordString, {
       method: 'GET'
     })
     .then((response) => response.json())
