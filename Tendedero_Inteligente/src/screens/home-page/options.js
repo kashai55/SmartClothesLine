@@ -1,110 +1,36 @@
-import * as React from "react";
-import {
-    Text,
-    View,
-    Alert,
-    StyleSheet
-} from "react-native";
-
-import SwitchButton from './switch'
-
-global.ipAddress = "192.168.1.5";
-global.port = "8000";
-global.switchAuto = true
-
-export default class LoginPage extends React.Component {
-    static navigationOptions = {
-        title: "Log-In"
-    };
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            switchValue: true,
-        };
-    }
-
-    _toggleSwitch = (value) => {
-        this.setState({switchValue: value})
-        if(this.switchAuto === this.state.switchValue){
-            this.switchAuto = true
-        }
-        else{
-            this.switchAuto = false
-        }
-    }
-
-    render() {
-        return (
-            <View style={styles.container}>
-                <Text style={styles.description}>Habilitar sensor de humedad</Text>
-                <View style={styles.flowRight}>
-                    <SwitchButton
-                        _toggleSwitch={this._toggleSwitch}
-                        switchValue={this.state.switchValue}
-                        style={styles.switch}
-                    />
-                </View>
-            </View>
-        );
-    }
+import React, { Component } from 'react';
+import { StyleSheet, View } from 'react-native';
+import ActionButton from 'react-native-action-button';
+import Icon from 'react-native-vector-icons/Ionicons';
+ 
+ 
+class OptionsPage extends Component {
+ 
+  render() {
+    return (
+      <View style={{flex:1, backgroundColor: '#f3f3f3'}}>
+        {/* Rest of the app comes ABOVE the action button component !*/}
+        <ActionButton buttonColor="rgba(231,76,60,1)">
+          <ActionButton.Item buttonColor='#9b59b6' title="New Task" onPress={() => console.log("notes tapped!")}>
+            <Icon name="md-create" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#3498db' title="Notifications" onPress={() => {}}>
+            <Icon name="md-notifications-off" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+          <ActionButton.Item buttonColor='#1abc9c' title="All Tasks" onPress={() => {}}>
+            <Icon name="md-done-all" style={styles.actionButtonIcon} />
+          </ActionButton.Item>
+        </ActionButton>
+      </View>
+    );
+  }
+ 
 }
-
+ 
 const styles = StyleSheet.create({
-    image: {
-        width: "50%",
-        height: "50%",
-        resizeMode: "contain"
-    },
-
-    container: {
-        flex: 1,
-        backgroundColor: "#2c3e50",
-        width: 320,
-        padding: 50,
-        margin: 20,
-    },
-    loginContainer: {
-        alignItems: "center",
-        flexGrow: 1,
-        justifyContent: "center"
-    },
-    logo: {
-        position: "absolute",
-        width: 300,
-        height: 100
-    },
-    input: {
-        height: 40,
-        backgroundColor: "rgba(225,225,225,0.2)",
-        marginBottom: 10,
-        padding: 10,
-        color: "#fff"
-    },
-    buttonContainer: {
-        backgroundColor: "#2980b6",
-        paddingVertical: 15,
-        height: 40,
-        marginBottom: 10,
-        padding: 10,
-    },
-    buttonText: {
-        color: "#fff",
-        textAlign: "center",
-        fontWeight: "700"
-    },
-    description: {
-        marginBottom: 25,
-        marginTop: 25,
-        fontSize: 28,
-        color: "#fff",
-        textAlign: "center"
-    },
-    description2: {
-        marginBottom: 25,
-        marginTop: 25,
-        fontSize: 14,
-        color: "#fff",
-        textAlign: "center"
-    }
+  actionButtonIcon: {
+    fontSize: 20,
+    height: 22,
+    color: 'white',
+  },
 });
