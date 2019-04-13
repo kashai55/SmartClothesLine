@@ -14,7 +14,7 @@ import Up from '../../assets/up.png'
 import Open from '../../assets/open.png'
 import Down from '../../assets/down.png'
 import Close from '../../assets/close.png'
-import switchAuto from '../../screens/home-page/options'
+import switchAuto from './options'
 
 export default class ClotheslinePage extends Component {
 
